@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Record</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f7f9fa, #b8d8ef); /* Light gradient background */
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px; /* Limit width for better readability */
+        }
+
+        .card {
+            border: none; /* Remove default border */
+            border-radius: 15px; /* Rounded corners for modern look */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .card-header {
+            background-color: #0277bd; /* Stylish blue header */
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .form-label {
+            font-weight: bold; /* Emphasize labels */
+        }
+
+        .btn-success {
+            background-color: #43a047; /* Custom green color */
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-success:hover {
+            background-color: #388e3c; /* Darker shade on hover */
+        }
+
+        .btn-secondary {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bdbdbd; /* Light gray shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                Update Record
+            </div>
+            <div class="card-body">
+                <form method="POST" action="">
+                    <div class="mb-3">
+                        <label for="student_name" class="form-label">Student Name:</label>
+                        <input type="text" id="student_name" name="student_name" class="form-control" value="{{ record.student_name }}" placeholder="Enter student name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roll_no" class="form-label">Roll Number:</label>
+                        <input type="text" id="roll_no" name="roll_no" class="form-control" value="{{ record.roll_no }}" placeholder="Enter roll number" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="hours_studied" class="form-label">Hours Studied:</label>
+                            <input type="number" id="hours_studied" name="hours_studied" class="form-control" value="{{ record.hours_studied }}" placeholder="Enter hours studied" min="0" max="24" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="attendance_percentage" class="form-label">Attendance Percentage:</label>
+                            <input type="number" id="attendance_percentage" name="attendance_percentage" class="form-control" value="{{ record.attendance_percentage }}" placeholder="Enter attendance percentage" min="0" max="100" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="assignments_submitted" class="form-label">Assignments Submitted:</label>
+                            <input type="number" id="assignments_submitted" name="assignments_submitted" class="form-control" value="{{ record.assignments_submitted }}" placeholder="Enter assignments submitted" min="0" max="10" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="previous_grades" class="form-label">Previous Grades:</label>
+                            <input type="number" id="previous_grades" name="previous_grades" class="form-control" value="{{ record.previous_grades }}" placeholder="Enter previous grades" min="0" max="100" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="submit" class="btn btn-success px-4">Update</button>
+                        <a href="/dashboard" class="btn btn-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Record</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2db0fb, #0362ab, #013054);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            color: #01579b;
+        }
+
+        .btn-success {
+            background-color: #0277bd;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #01579b;
+        }
+
+        .btn-secondary {
+            background-color: #bdbdbd;
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #9e9e9e;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Update Record</h1>
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <form method="POST" action="" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="student_name" class="form-label">Student Name:</label>
+                        <input type="text" id="student_name" name="student_name" class="form-control" value="{{ record.student_name }}" required>
+                        <div class="invalid-feedback">Please enter the student's name.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roll_no" class="form-label">Roll Number:</label>
+                        <input type="text" id="roll_no" name="roll_no" class="form-control" value="{{ record.roll_no }}" required>
+                        <div class="invalid-feedback">Please enter the roll number.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="hours_studied" class="form-label">Hours Studied:</label>
+                            <input type="number" id="hours_studied" name="hours_studied" class="form-control" value="{{ record.hours_studied }}" required>
+                            <div class="invalid-feedback">Please provide the hours studied.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="attendance_percentage" class="form-label">Attendance Percentage:</label>
+                            <input type="number" id="attendance_percentage" name="attendance_percentage" class="form-control" value="{{ record.attendance_percentage }}" required>
+                            <div class="invalid-feedback">Please provide the attendance percentage.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="assignments_submitted" class="form-label">Assignments Submitted:</label>
+                            <input type="number" id="assignments_submitted" name="assignments_submitted" class="form-control" value="{{ record.assignments_submitted }}" required>
+                            <div class="invalid-feedback">Please provide the number of assignments submitted.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="previous_grades" class="form-label">Previous Grades:</label>
+                            <input type="number" id="previous_grades" name="previous_grades" class="form-control" value="{{ record.previous_grades }}" required>
+                            <div class="invalid-feedback">Please provide the previous grades.</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="submit" class="btn btn-success px-4">Update</button>
+                        <a href="/dashboard" class="btn btn-secondary px-4">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Bootstrap validation script
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
+</html> -->

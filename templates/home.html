@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script src="{{ url_for('static', filename='css/home.js') }}"></script>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Prediction app - {% block title %}home{% endblock %}</title>
+  </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-4 fw-bold " href="/" style="color:  #01579b;">HOME</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link  {% if current_route == 'prediction' %}active {% endif %}" href="/sd" style="color:  #014478;">Score Prediction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_route == 'dashboard' %}active {% endif %}" href="/dashboard" style="color:  #014478;">Dashboard</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link {% if current_route == 'stats' %}active text-primary{% endif %}" href="/stats" style="color:   #014478;">Statistics</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link " href="/admin" style="color:   #014478;">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if current_route == 'help' %}active {% endif %}" href="/help" style="color:  #014478;">Help</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto" >
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link  fw-bold" style="color:  #01579b;"><i class="fas fa-user"></i> Welcome {{ current_user.username }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  fw-bold" style="color:  #01579b;" onclick="confirmLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item" >
+            <a class="nav-link  fw-bold" href="/login" style="color:  #01579b;"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  fw-bold" href="/signup" style="color:  #01579b;"><i class="fas fa-user-plus"></i> Sign-Up</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block bodyblock %}
+
+<div>
+  <div class="container-fluid">
+ <!-- Hero Section -->
+  <div class="hero text-center py-5 text-white w-100" style="background: linear-gradient(#19a5f6,#0362ab, #013862)">
+    <h1>Unlock Your Potential with Performance Analytics</h1>
+    <p class="lead">Analyze, Predict, and Improve Your Academic Journey with Advanced Insights.</p>
+    <a href="/signup" class="btn btn-light" style="color: #014478;">Start Your Journey</a>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="features-section container my-5">
+  <div class="row text-center">
+    <!-- Feature 1 -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <i class="bi bi-graph-up feature-icon fs-1" ></i>
+        <h3 class="feature-title">Predict Performance</h3>
+        <p class="feature-description">Leverage machine learning to predict your academic performance and set achievable goals.</p>
+      </div>
+    </div>
+    <!-- Feature 2 -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <i class="bi bi-bar-chart feature-icon fs-1" ></i>
+        <h3 class="feature-title">Visual Insights</h3>
+        <p class="feature-description">Interactive charts and graphs help you make sense of your study patterns effortlessly.</p>
+      </div>
+    </div>
+    <!-- Feature 3 -->
+    <div class="col-md-4">
+      <div class="feature-item">
+        <i class="bi bi-shield-lock feature-icon fs-1" ></i>
+        <h3 class="feature-title">Secure Access</h3>
+        <p class="feature-description">Built with state-of-the-art security to ensure your data is safe and confidential.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Intro Section -->
+  <div class="container-fluid" id="intro">
+      <div class="row align-items-center">
+          <div class="col-md-6 col-sm-12 order-2 order-md-1">
+              <h2 class="display-4">Empowering Students, Transforming Futures</h2>
+              <p>Explore how our intelligent performance prediction system identifies key areas to focus on and helps students, teachers, and institutions achieve their goals.</p>
+              <!-- <button class="btn btn-primary" >Learn More</button> -->
+               <a href="/km" class="btn btn-primary">Learn More</a>
+          </div>
+          <div class="col-md-6 col-sm-12 order-1 order-md-2">
+              <img src="{{ url_for('static', filename='image/student_performance_2.png') }}" class="img-fluid" alt="Responsive Image">
+          </div>
+      </div>
+  </div>
+
+  <!-- Benefits Section -->
+  <div class="container my-5" id="intro">
+      <div class="row">
+          <div class="col-md-6 col-sm-12">
+              <img src="{{ url_for('static', filename='image/student_performance.png') }}" class="img-fluid" alt="Responsive Image">
+          </div>
+          <div class="col-md-6 col-sm-12">
+              <h2 class="display-3">&nbsp;Key Benefits</h2>
+              <ul class="lead" type="none">
+                  <li><i class="bi bi-graph-up"></i> Graphical Data Presentation</li>
+                  <li><i class="bi bi-bullseye"></i> Goal Settings</li>
+                  <li><i class="bi bi-clock-history"></i> Faster Result Analysis</li>
+                  <li><i class="bi bi-arrow-up-right-circle"></i> Improve Performance</li>
+                  <li><i class="bi bi-lightbulb"></i> Motivates Students to Perform Better</li>
+                  <li><i class="bi bi-person-badge"></i> Help Teachers To Improve Students Performance</li>
+                  <li><i class="bi bi-person-check"></i> Identify Slow Learners</li>
+                  <li><i class="bi bi-bar-chart-steps"></i> Track Progress</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <!-- PREDICTION Preview -->
+  <div class="prediction-preview py-5 bg-light">
+      <div class="container text-center">
+          <h2>Your Score Prediction</h2>
+          <p>Check your progress and performance in one place.</p>
+          <a href="/sd" class="btn btn-primary" >Go for Prediction</a>
+      </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="testimonials-section py-5">
+  <div class="container">
+    <h3 class="text-center mb-4">What Our Users Say</h3>
+    <div class="row justify-content-center">
+      <!-- Testimonial 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"This tool helped me improve my grades significantly. Highly recommend!"</p>
+          <footer class="testimonial-footer">- John Doe, Student</footer>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"As a teacher, I can now identify slow learners and help them perform better."</p>
+          <footer class="testimonial-footer">- Jane Smith, Educator</footer>
+        </div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"The predictions are so accurate, it’s like having a personal tutor!"</p>
+          <footer class="testimonial-footer">- Mary Johnson, Parent</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<br>
+<!-- Footer -->
+<footer class="bg-dark text-white pt-4 w-100" >
+    <div class="container">
+        <div class="row">
+            <!-- About Us -->
+            <div class="col-md-3 mb-3">
+                <h5>About Us</h5>
+                <p>Providing advanced insights for tracking and improving academic performance.</p>
+            </div>
+            <!-- Quick Links -->
+            <div class="col-md-3 mb-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/sd" class="text-white text-decoration-none"><i class="fas fa-chart-line me-2"></i>Score Prediction</a></li>
+                    <li><a href="/dashboard" class="text-white text-decoration-none"><i class="fas fa-th-large me-2"></i>Dashboard</a></li>
+                    <li><a href="" class="text-white text-decoration-none"><i class="fas fa-chart-pie me-2"></i>Graphs</a></li>
+                    <li><a href="/help" class="text-white text-decoration-none"><i class="fas fa-info-circle me-2"></i>Help</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div class="col-md-3 mb-3">
+                <h5>Contact Us</h5>
+                <p><i class="fas fa-envelope me-2"></i>support@abc.com</p>
+                <p><i class="fas fa-phone me-2"></i>+91-9876543210</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i>1234, Street, City, State</p>
+            </div>
+            <!-- Stay Connected -->
+            <div class="col-md-3 mb-3">
+                <h5>Stay Connected</h5>
+                <form class="d-flex">
+                    <input type="email" class="form-control me-2" placeholder="Enter your email" aria-label="Email">
+                    <button type="submit" class="btn btn-primary" style="background-color: #0568b5;">Subscribe</button>
+                </form>
+                <div class="mt-3">
+                    <a href="https://facebook.com" class="text-white me-3" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="https://twitter.com" class="text-white me-3" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="https://instagram.com" class="text-white me-3" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://linkedin.com" class="text-white me-3" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="my-3 text-secondary">
+        <div class="text-center d-flex justify-content-center align-items-center">
+            <p>&copy; 2025 Student Performance Prediction. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+  </body>
+</html>

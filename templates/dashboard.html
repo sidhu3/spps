@@ -1,0 +1,179 @@
+{% extends 'home.html'%}
+
+{% block title %}dashboard{% endblock %}
+
+{% block bodyblock %}
+
+<style>
+    body{
+        background: linear-gradient(135deg, #f0f4f8, #72a9e9, #5f9de4, #2880e4);
+    }
+
+    h2{
+        color: #102a43;
+        font-weight: 600;   
+    }
+      .btn-light {
+    background-color: white;
+    color: #014478;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Button Hover Effect */
+  .btn-light:hover {
+    background-color:  white;
+    color: #014478;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+</style>
+<body >
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Student Performance Dashboard</h2>
+        <br>
+        <!-- Graph Section -->
+        <!-- <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <h5 class="text-center">Grade Distribution</h5>
+                <img src="{{ url_for('static', filename='grade_distribution.png') }}" alt="Grade Distribution" class="img-fluid">
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h5 class="text-center">Performance Score Trends</h5>
+                <img src="{{ url_for('static', filename='performance_score_distribution.png') }}" alt="Performance Score Distribution" class="img-fluid">
+            </div> -->
+        <!-- </div> -->
+
+        <!-- <div class="row mt-4"> -->
+            <!-- <div class="col-md-3 col-sm-6">
+                <h5 class="text-center">Pass/Fail Ratio</h5>
+                <img src="{{ url_for('static', filename='pass_fail_count.png') }}" alt="Pass/Fail Ratio" class="img-fluid">
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h5 class="text-center">Attendance vs Performance</h5>
+                <img src="{{ url_for('static', filename='attendance_vs_performance.png') }}" alt="Attendance vs Performance" class="img-fluid">
+            </div>
+            </div>
+            <br><br> -->
+
+        <!-- Filter Form -->
+        <form method="GET" action="/dashboard" class="row g-3 mb-4">
+    <div class="col-md-3">
+        <label for="min_score" class="form-label">Min Performance Score:</label>
+        <input type="number" name="min_score" id="min_score" class="form-control" value="{{ min_score }}">
+    </div>
+    <div class="col-md-3">
+        <label for="max_score" class="form-label">Max Performance Score:</label>
+        <input type="number" name="max_score" id="max_score" class="form-control" value="{{ max_score }}">
+    </div>
+    <div class="col-md-3">
+        <label for="grade" class="form-label">Grade:</label>
+        <select name="grade" id="grade" class="form-select">
+            <option value="">All</option>
+            <option value="A+" {% if grade_filter == 'A+' %}selected{% endif %}>A+</option>
+            <option value="A" {% if grade_filter == 'A' %}selected{% endif %}>A</option>
+            <option value="B+" {% if grade_filter == 'B+' %}selected{% endif %}>B+</option>
+            <option value="B" {% if grade_filter == 'B' %}selected{% endif %}>B</option>
+            <option value="C" {% if grade_filter == 'C' %}selected{% endif %}>C</option>
+            <option value="D" {% if grade_filter == 'D' %}selected{% endif %}>D</option>
+            <option value="F" {% if grade_filter == 'F' %}selected{% endif %}>F</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="pass_fail" class="form-label">Pass/Fail:</label>
+        <select name="pass_fail" id="pass_fail" class="form-select">
+            <option value="">All</option>
+            <option value="Pass" {% if pass_fail_filter == 'Pass' %}selected{% endif %}>Pass</option>
+            <option value="Fail" {% if pass_fail_filter == 'Fail' %}selected{% endif %}>Fail</option>
+        </select>
+    </div>
+    <!-- Hidden input to reset page to 1 -->
+    <input type="hidden" name="page" value="1">
+    <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary" style="background-color: #045c9f;">Filter</button>
+    </div>
+</form>
+
+
+        
+
+        <!-- Data Table -->
+        <div class="table-responsive mt-5" style="background-color: aliceblue;">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Student Name</th>
+                        <th>Roll No</th>
+                        <th>Hours Studied/Day</th>
+                        <th>Attendance Percentage</th>
+                        <th>Assignments Submitted</th>
+                        <th>Previous Grades</th>
+                        <th>Performance Score</th>
+                        <th>Grade</th>
+                        <th>Pass/Fail</th>
+                        <th>Update/Delete Records</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            <td>{{ (page - 1) * per_page + loop.index }}</td>
+                            <td>{{ row['student_name'] }}</td>
+                            <td>{{ row['roll_no'] }}</td>
+                            <td>{{ row['hours_studied'] }}</td>
+                            <td>{{ row['attendance_percentage'] }}</td>
+                            <td>{{ row['assignments_submitted'] }}</td>
+                            <td>{{ row['previous_grades'] }}</td>
+                            <td>{{ row['predicted_score'] | round(2) }}</td>
+                            <td>{{ row['grade'] }}</td>
+                            <td>{{ row['pass_fail'] }}</td>
+                            <td>
+                                <a href="/update/{{ row.id }}" class="btn btn-warning btn-sm">Update</a>
+                                <form action="/delete/{{ row.id }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure?');">
+                                   <button type="submit" class="btn btn-danger btn-sm">Delete&nbsp;&nbsp;</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="/student/{{ row.id }}" class="btn btn-info btn-sm">Details</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+<!-- Pagination Controls -->
+<div class="d-flex justify-content-center mt-4">
+    <nav>
+        <ul class="pagination">
+            <!-- Previous Button -->
+            <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+                <a class="page-link" href="?page={{ page - 1 }}" tabindex="-1">Previous</a>
+            </li>
+            <!-- Page Numbers -->
+            {% for p in range(1, total_pages + 1) %}
+                <li class="page-item {% if p == page %}active{% endif %}">
+                    <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+            <!-- Next Button -->
+            <li class="page-item {% if page >= total_pages %}disabled{% endif %}">
+                <a class="page-link" href="?page={{ page + 1 }}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <a href="/sd" class="btn btn-light" >Go for Prediction</a>
+</div>
+</div>
+</body>
+
+{% endblock %}

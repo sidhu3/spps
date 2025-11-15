@@ -1,0 +1,113 @@
+{% extends 'home.html' %}
+
+{% block title %}help{% endblock %}
+
+{% block bodyblock %}
+<!-- <style>
+    .btn-primary:hover{
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+</style> -->
+
+<div class="container my-5" >
+        <h1 class="text-center mb-4" style="color: #01579b;">Help & Support</h1>
+        <p class="text-center text-muted">Find answers to common questions and learn how to use the platform effectively.</p>
+
+        <!-- FAQ Section -->
+        <section class="my-5">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            <div class="accordion" id="faqAccordion">
+                <!-- Question 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            How do I sign up for an account?
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Click the <strong>Sign-Up</strong> button in the top-right corner of the homepage, fill in your details, and click "Register" to create your account.
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            How do I make a performance prediction?
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Navigate to the <strong>Prediction</strong> page, enter the required details (e.g., hours studied, attendance, etc.), and click "Predict" to get your performance score.
+                        </div>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            What should I do if I forget my password?
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            On the <strong>Login</strong> page, click "Forgot Password" and follow the instructions to reset your password.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Overview -->
+        <section class="my-5">
+            <h2>Platform Features</h2>
+            <p>Our platform offers the following features to enhance your academic journey:</p>
+            <ul>
+                <li><strong>Performance Prediction:</strong> Predict your academic performance based on key inputs.</li>
+                <li><strong>Dashboard:</strong> View, filter, and track your progress over time.</li>
+                <li><strong>Data Visualizations:</strong> Explore insights with interactive charts and graphs.</li>
+                <li><strong>Secure User Accounts:</strong> Ensure your data is safe with state-of-the-art security.</li>
+            </ul>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section class="my-5">
+            <h2>Troubleshooting</h2>
+            <p>If you're experiencing issues, try the following steps:</p>
+            <ol>
+                <li>Ensure you have a stable internet connection.</li>
+                <li>Clear your browser's cache and cookies.</li>
+                <li>Update your browser to the latest version.</li>
+                <li>Contact support if the issue persists.</li>
+            </ol>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section class="my-5">
+            <h2>Contact Support</h2>
+            <p>If you need further assistance, please reach out to us:</p>
+            <ul>
+                <li>Email: <a href="#">support@abc.com</a></li>
+                <li>Phone: +91-9876543210</li>
+                <li>Address: 1234, Street, City, State</li>
+            </ul>
+        </section>
+
+        <!-- Feedback Form -->
+        <section class="my-5">
+            <h2>Feedback</h2>
+            <p>We value your feedback! Please let us know how we can improve:</p>
+            <form>
+                <div class="mb-3">
+                    <label for="feedback" class="form-label">Your Feedback</label>
+                    <textarea id="feedback" class="form-control" rows="4" placeholder="Write your feedback here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: #0568b5;">Submit</button>
+            </form>
+        </section>
+    </div>
+
+
+{% endblock %}

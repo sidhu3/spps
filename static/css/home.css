@@ -1,0 +1,256 @@
+/* NAVBAR SECTION */
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar-brand {
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-brand:hover {
+    transform: scale(1.1);
+    color: #0d6efd;
+  }
+
+  .nav-link {
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* display: inline-block; */
+    /* padding: 0.5rem 1rem; */
+  }
+
+  .nav-link:hover {
+    color: #0d6efd;
+    transform: scale(1.05);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f6c61b;
+    color: #f6c61b;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Active state for nav links */
+.nav-link.active {
+  color: #f6c61b !important;  /* same as hover */
+  font-weight: 550;
+  transform: scale(1.05);
+}
+
+/* .nav-link.active::after { */
+  /* width: 100%;                 underline stays for active page */
+  /* background-color: #f6c61b;   golden underline */
+/* } */
+
+
+  .navbar-toggler-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* @media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+} */
+
+/* HERO SECTION */
+.hero{
+  border-radius: 20px;
+}
+
+  .hero .btn-light {
+    background-color: white;
+    color: #03497f;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Button Hover Effect */
+  .hero .btn:hover {
+    background-color:  white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }  
+
+/* INTRO SECTION */
+#intro h2{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#intro p{
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  margin-left: 10px;
+}
+#intro li{
+  line-height: 2.0;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+#intro .btn-primary{
+  border-radius: 25px;
+  background-color: #0568b5;
+  margin-left: 10px;
+}
+#intro .btn-primary:hover{
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);  
+}  
+  
+/* DASHBOARD Preview Styling */
+  .prediction-preview {
+    background: linear-gradient(135deg,#19a5f6,#0362ab, #013862);
+    color: #ffffff; /* White text for contrast */
+    border-radius: 20px; /* Rounded corners */
+    padding: 50px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  /* Header Styling */
+  .prediction-preview h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Paragraph Styling */
+  .prediction-preview p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #e3f2fd;
+  }
+
+  /* Button Styling */
+  .prediction-preview .btn-primary {
+    background-color: white;
+    color: #03497f;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Button Hover Effect */
+  .prediction-preview .btn-primary:hover {
+    background-color: #66b0ec;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }  
+
+
+ /* TESTIMONIALS Section Styling */
+  .testimonials-section {
+    color: black;
+    padding: 50px 0;
+  }
+
+  /* Section Title */
+  .testimonials-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #01579b;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+ /* Testimonial Card */
+  .testimonial-card {
+    background: #e0e9f6;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  /* Card Hover Effect */
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Testimonial Text */
+  .testimonial-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #020101;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .testimonial-footer {
+    font-weight: 600;
+    color: #01579b;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      padding: 15px;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+    }
+  }  
+
+
+/* FEATURE ICON'S STYLING */
+  .feature-icon {
+    color: #01579b; /* Default color */
+    transition: transform 0.4s ease-in-out, text-shadow 0.4s ease-in-out, color 0.4s ease-in-out;
+    display: inline-block; /* Ensures the transform effect applies correctly */
+  }
+
+  /* Hover Effect */
+  .feature-icon:hover {
+    color:  #f6c61b; /* Orange color */
+    text-shadow: 0 0 10px #f6c61b, 0 0 20px #f6c61b, 0 0 30px #f6c61b;
+    transform: scale(1.1); /* Ensure the size increases */
+  }     
+
+  .feature-section p{
+   font-family: 'Poppins', sans-serif;   
+  }
+
+
+/* BUTTONS  */
+.btn-primary:hover{
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }  

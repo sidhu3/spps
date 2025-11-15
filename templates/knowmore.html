@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+
+{% block title %}Know More{% endblock %}
+
+{% block bodyblock %}
+<body class="bg-light">
+
+  <div class="container my-5">
+    <!-- Header -->
+    <h1 class="text-center mb-4" style="color: #01579b;">Know More</h1>
+    <p class="text-center text-muted">
+      Learn about how our Student Performance Prediction System works and how it can benefit you.
+    </p>
+
+    <!-- About Section -->
+    <section class="my-5">
+      <h2>About the Project</h2>
+      <p>
+        The <strong>Student Performance Prediction System</strong> is designed to assist students and educators in analyzing academic performance. 
+        Using Machine Learning and Data Science, it predicts scores, grades, and pass/fail status while providing useful visual insights.
+      </p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="my-5">
+      <h2>Key Features</h2>
+      <ul>
+        <li><strong>📊 Performance Prediction:</strong> Enter study details and instantly get predicted scores and grades.</li>
+        <li><strong>📈 Dashboard:</strong> Filter and track academic progress with tabular data.</li>
+        <li><strong>📉 Graphical Insights:</strong> View interactive charts built with <em>Chart.js</em> for better understanding.</li>
+        <li><strong>🔒 Authentication:</strong> Secure login and signup with CRUD operations.</li>
+      </ul>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="my-5">
+      <h2>How It Works</h2>
+      <ol>
+        <li>Users enter details like hours studied, attendance percentage, assignments submitted, and previous grades.</li>
+        <li>The trained ML model processes the data and predicts the performance score.</li>
+        <li>The system displays grade, pass/fail status, and graphs for deeper insights.</li>
+      </ol>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="my-5">
+      <h2>Technology Stack</h2>
+      <p>Our project is built using the following technologies:</p>
+      <ul>
+        <li><strong>Frontend:</strong> HTML, CSS, Bootstrap</li>
+        <li><strong>Backend:</strong> Flask (Python)</li>
+        <li><strong>Database:</strong> SQLite (lightweight, integrated)</li>
+        <li><strong>ML & Visualization:</strong> Scikit-learn, Pandas, Chart.js</li>
+      </ul>
+    </section>
+
+    <!-- Future Scope Section -->
+    <section class="my-5">
+      <h2>Future Scope</h2>
+      <p>
+        We plan to extend the system with advanced features such as:
+      </p>
+      <ul>
+        <li>📱 Mobile application integration for real-time updates.</li>
+        <li>🤖 Personalized study recommendations using AI.</li>
+        <li>📡 Real-time data streaming for live performance tracking.</li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+
+
+{% endblock %}
